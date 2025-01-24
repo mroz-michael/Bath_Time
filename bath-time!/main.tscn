@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://56nn13kob6sb"]
+
+[node name="Main" type="Node"]
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="SpongeStartPosition" type="Marker2D" parent="."]
+
+[node name="CleaningTime" type="Timer" parent="."]
