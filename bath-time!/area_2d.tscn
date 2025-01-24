@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://sepquasowbrp"]
+[gd_scene load_steps=5 format=3 uid="uid://sepquasowbrp"]
 
-[node name="Area2D" type="Area2D"]
+[ext_resource type="Script" path="res://sponge.gd" id="1_o4m3u"]
+[ext_resource type="Texture2D" uid="uid://c212h4bmf701" path="res://ART/SPONGEPLACEHOLDER.png" id="1_wf851"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4htmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wf851")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny4yj"]
+size = Vector2(395.604, 400)
+
+[node name="Sponge" type="Area2D"]
+position = Vector2(635, 427)
+scale = Vector2(0.455, 0.455)
+script = ExtResource("1_o4m3u")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4htmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ny4yj")
