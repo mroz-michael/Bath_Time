@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://vfh7noohvngv"]
+
+[ext_resource type="PackedScene" uid="uid://d16hlet1bpts5" path="res://minigames/bubbleRide!/Bubblepack.tscn" id="1_1hg8v"]
+[ext_resource type="Script" path="res://minigames/bubbleRide!/bubble_ride_main.gd" id="1_hn5pe"]
+[ext_resource type="PackedScene" uid="uid://dtlffijgbw7wl" path="res://minigames/bubbleRide!/obstacle.tscn" id="2_4felk"]
+[ext_resource type="Texture2D" uid="uid://cwmnr4cwjenbe" path="res://minigames/bubbleRide!/art/backgroundtemp.png" id="3_6rgh5"]
+[ext_resource type="Script" path="res://minigames/bubbleRide!/background.gd" id="3_utsvg"]
+[ext_resource type="PackedScene" uid="uid://d2qfx6s1o6n7e" path="res://minigames/bubbleRide!/bubbleridehud.tscn" id="6_br42m"]
+
+[sub_resource type="Curve2D" id="Curve2D_qvba7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1976, -8, 0, 0, 0, 0, 1984, 1088)
+}
+point_count = 2
+
+[node name="bubbleRideMain" type="Node"]
+script = ExtResource("1_hn5pe")
+obstacle_scene = ExtResource("2_4felk")
+
+[node name="background" type="Node2D" parent="."]
+script = ExtResource("3_utsvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+position = Vector2(2501, 540)
+texture = ExtResource("3_6rgh5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="background"]
+position = Vector2(7500, 540)
+texture = ExtResource("3_6rgh5")
+
+[node name="BubblePack" parent="." instance=ExtResource("1_1hg8v")]
+
+[node name="obstacle" parent="." instance=ExtResource("2_4felk")]
+position = Vector2(2560, -536)
+
+[node name="obstacleSpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_qvba7")
+
+[node name="spawnlocation" type="PathFollow2D" parent="obstacleSpawner"]
+position = Vector2(1976, -8)
+rotation = 1.5635
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(192, 936)
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+
+[node name="bubbleridehud" parent="." groups=["player"] instance=ExtResource("6_br42m")]
+
+[connection signal="incrementScore" from="." to="bubbleridehud" method="_on_bubble_ride_main_increment_score"]
+[connection signal="hit" from="BubblePack" to="." method="game_over"]
+[connection signal="ObstacleHit" from="obstacle" to="." method="_on_obstacle_obstacle_hit"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="start_game" from="bubbleridehud" to="." method="_on_bubbleridehud_start_game"]

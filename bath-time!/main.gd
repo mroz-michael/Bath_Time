@@ -3,10 +3,12 @@ var clean_progress = 0
 const clean_goal = 100
 var anger_meter = 2.5
 const anger_threshold = 10.0
+var game_running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_game()
+	
 	$mainSceneHud/CleanBar.value = clean_progress
 	$mainSceneHud/AngerBar.value = anger_meter
 	
@@ -34,6 +36,7 @@ func new_game():
 func start_game():
 	clean_progress = 0
 	anger_meter = 2.5
+	game_running = true
 	gameHud()
 	
 func gameHud():
@@ -51,13 +54,15 @@ func game_over():
 	
 #this function increments the player's cleaning progress
 func _on_sponge_cleaning(amount: float) -> void:
-	clean_progress += amount
+	if (game_running):
+		clean_progress += amount
 	#print(clean_progress)
 	
 #this function increments the anger meter
 func _on_sponge_anger(amount: float) -> void:
-	anger_meter += amount
-	print(anger_meter)
+	if (anger_threshold >= anger_meter && game_running):
+		anger_meter += amount
+		print(anger_meter)
 
 
 func _on_main_scene_hud_button_pressed() -> void:

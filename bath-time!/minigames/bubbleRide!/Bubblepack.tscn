@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d16hlet1bpts5"]
+
+[ext_resource type="Script" path="res://minigames/bubbleRide!/bubblepack.gd" id="1_d0ljw"]
+[ext_resource type="Texture2D" uid="uid://cgoaw4ak8b5o" path="res://minigames/bubbleRide!/art/characterplaceholder.png" id="1_hf1me"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0u1c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hf1me")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f104y"]
+radius = 194.937
+height = 805.063
+
+[node name="BubblePack" type="RigidBody2D" groups=["player"]]
+position = Vector2(414, 711)
+gravity_scale = 2.219
+script = ExtResource("1_d0ljw")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.111, 0.193)
+sprite_frames = SubResource("SpriteFrames_a0u1c")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.28076, 7.75446)
+scale = Vector2(0.168635, 0.170167)
+shape = SubResource("CapsuleShape2D_f104y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

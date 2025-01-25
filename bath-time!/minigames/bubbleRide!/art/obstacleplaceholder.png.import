@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgoaw4ak8b5o"
-path="res://.godot/imported/characterplaceholder.png-2f55ac20c165ebb4772dcf03cdcd54dd.ctex"
+uid="uid://bihi2bhsqrcg1"
+path="res://.godot/imported/obstacleplaceholder.png-dbde454d5d210092a40c412090c18572.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/characterplaceholder.png"
-dest_files=["res://.godot/imported/characterplaceholder.png-2f55ac20c165ebb4772dcf03cdcd54dd.ctex"]
+source_file="res://minigames/bubbleRide!/art/obstacleplaceholder.png"
+dest_files=["res://.godot/imported/obstacleplaceholder.png-dbde454d5d210092a40c412090c18572.ctex"]
 
 [params]
 
