@@ -21,10 +21,8 @@ func _process(delta: float) -> void:
 	mouse_coordDiff = (mouse_position - mouse_prevPos) / delta
 	mouse_prevPos = mouse_position
 	mouse_speed = mouse_coordDiff.length()
-	#print(mouse_speed)
 	#print("speed: ", mouse_speed)
 	if (is_cleaning && (mouse_speed > 1500)):
-		print("Im cleaning!!!!!")
 		hit.emit()
 		cleaning.emit(mouse_speed / real_score_multiplier)
 

@@ -17,3 +17,4 @@ func _process(delta: float) -> void:
 func _on_sponge_cleaning(amount: float) -> void:
 	clean_progress += amount
 	print(clean_progress)# Replace with function body.
+	
