@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://noeder0336va"]
+[gd_scene load_steps=5 format=3 uid="uid://dcse0gs0obmlr"]
 
 [ext_resource type="Script" path="res://sponge.gd" id="1_o4m3u"]
 [ext_resource type="Texture2D" uid="uid://bjwa2spewqw7c" path="res://ART/sponge.png" id="2_xn2va"]

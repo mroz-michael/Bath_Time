@@ -1,9 +1,23 @@
-[gd_scene format=3 uid="uid://56nn13kob6sb"]
+[gd_scene load_steps=4 format=3 uid="uid://56nn13kob6sb"]
+
+[ext_resource type="PackedScene" uid="uid://b0ou1g3lkc38k" path="res://character.tscn" id="1_05t2u"]
+[ext_resource type="Script" path="res://main.gd" id="1_b35a6"]
+[ext_resource type="PackedScene" uid="uid://noeder0336va" path="res://area_2d.tscn" id="2_hkpfh"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_b35a6")
 
 [node name="StartTimer" type="Timer" parent="."]
 
 [node name="SpongeStartPosition" type="Marker2D" parent="."]
 
 [node name="CleaningTime" type="Timer" parent="."]
+
+[node name="character" parent="." instance=ExtResource("1_05t2u")]
+gravity_scale = 0.0
+
+[node name="Sponge" parent="." instance=ExtResource("2_hkpfh")]
+position = Vector2(1605, 1046)
+score_multiplier = 3000
+
+[connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]

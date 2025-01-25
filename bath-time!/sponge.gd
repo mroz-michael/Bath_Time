@@ -3,6 +3,10 @@ signal hit
 var mouse_speed = 0.0
 var mouse_coordDiff = 0.0
 var mouse_prevPos = Vector2.ZERO
+var is_cleaning = false
+@export var score_multiplier = 500
+var real_score_multiplier = score_multiplier * 250
+signal cleaning(amount: float)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,11 +21,23 @@ func _process(delta: float) -> void:
 	mouse_coordDiff = (mouse_position - mouse_prevPos) / delta
 	mouse_prevPos = mouse_position
 	mouse_speed = mouse_coordDiff.length()
-	print("speed: ", mouse_speed)
+	#print(mouse_speed)
+	#print("speed: ", mouse_speed)
+	if (is_cleaning && (mouse_speed > 1500)):
+		print("Im cleaning!!!!!")
+		hit.emit()
+		cleaning.emit(mouse_speed / real_score_multiplier)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	#emit a hit when the sponge is touching body
-	if (mouse_speed > 500):
-		hit.emit()
+	is_cleaning = true
+	print("entered!")
+		
+		
 	#$CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_body_exited(body: Node2D) -> void:
+	is_cleaning = false
+	print("im not cleaning")# Replace with function body.

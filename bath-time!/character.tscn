@@ -22,6 +22,7 @@ position = Vector2(970, 619)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 0
 position = Vector2(-12.88, 30)
 shape = SubResource("CapsuleShape2D_quav8")
 
