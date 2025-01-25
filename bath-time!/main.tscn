@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://56nn13kob6sb"]
+[gd_scene load_steps=5 format=3 uid="uid://56nn13kob6sb"]
 
 [ext_resource type="PackedScene" uid="uid://b0ou1g3lkc38k" path="res://character.tscn" id="1_05t2u"]
 [ext_resource type="Script" path="res://main.gd" id="1_b35a6"]
 [ext_resource type="PackedScene" uid="uid://noeder0336va" path="res://area_2d.tscn" id="2_hkpfh"]
+[ext_resource type="PackedScene" uid="uid://bnkfu336xn6lw" path="res://main_scene_hud.tscn" id="4_g4yei"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_b35a6")
@@ -17,7 +18,9 @@ script = ExtResource("1_b35a6")
 gravity_scale = 0.0
 
 [node name="Sponge" parent="." instance=ExtResource("2_hkpfh")]
-position = Vector2(1605, 1046)
+position = Vector2(1629, 592)
 score_multiplier = 3000
+
+[node name="mainSceneHud" parent="." instance=ExtResource("4_g4yei")]
 
 [connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]
