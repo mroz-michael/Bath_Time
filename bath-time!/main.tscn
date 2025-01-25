@@ -23,4 +23,6 @@ score_multiplier = 3000
 
 [node name="mainSceneHud" parent="." instance=ExtResource("4_g4yei")]
 
+[connection signal="anger" from="Sponge" to="." method="_on_sponge_anger"]
 [connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]
+[connection signal="buttonPressed" from="mainSceneHud" to="." method="_on_main_scene_hud_button_pressed"]

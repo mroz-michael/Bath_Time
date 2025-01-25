@@ -7,6 +7,7 @@ var is_cleaning = false
 @export var score_multiplier = 500
 var real_score_multiplier = score_multiplier * 250
 signal cleaning(amount: float)
+signal anger(amount: float)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()# Replace with function body.
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 	if (is_cleaning && (mouse_speed > 1500)):
 		hit.emit()
 		cleaning.emit(mouse_speed / real_score_multiplier)
+		anger.emit(0.025)
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ou1g3lkc38k"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ou1g3lkc38k"]
 
 [ext_resource type="Texture2D" uid="uid://d18qi485rawki" path="res://ART/computerguy.png" id="1_kr7lv"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quav8"]
-radius = 311.88
-height = 877.76
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2jddb"]
 animations = [{
@@ -17,14 +13,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="character" type="RigidBody2D"]
-position = Vector2(970, 619)
-metadata/_edit_group_ = true
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quav8"]
+radius = 341.0
+height = 816.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12.88, 30)
-shape = SubResource("CapsuleShape2D_quav8")
-debug_color = Color(0.913725, 0, 0.2, 1)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdemt"]
+radius = 238.641
+height = 802.0
+
+[node name="character" type="RigidBody2D"]
+position = Vector2(970, 622)
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2jddb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, -12)
+shape = SubResource("CapsuleShape2D_quav8")
+debug_color = Color(0.913725, 0, 0.2, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 189)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pdemt")
+debug_color = Color(0.3538, 0.486154, 0.98966, 0.42)
