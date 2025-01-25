@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://d16hlet1bpts5"]
 
 [ext_resource type="Script" path="res://minigames/bubbleRide!/bubblepack.gd" id="1_d0ljw"]
-[ext_resource type="Texture2D" uid="uid://cgoaw4ak8b5o" path="res://minigames/bubbleRide!/art/characterplaceholder.png" id="1_hf1me"]
+[ext_resource type="Texture2D" uid="uid://dhqa216ib16ha" path="res://ART/liljetguy.png" id="2_6hrg0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0u1c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_hf1me")
+"texture": ExtResource("2_6hrg0")
 }],
 "loop": true,
 "name": &"default",

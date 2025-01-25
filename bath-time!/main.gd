@@ -24,8 +24,8 @@ func _process(delta: float) -> void:
 	
 	#launch a minigame here
 	if (anger_meter >= anger_threshold):
-		#get_tree().change_scene_to_file("res://minigames/test_minigame/node.tscn")
-		pass
+		get_tree().change_scene_to_file("res://minigames/bubbleRide!/bubble_ride_main.tscn")
+		#pass
 
 func new_game():
 	$Sponge.hide()
