@@ -1,13 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://56nn13kob6sb"]
+[gd_scene load_steps=13 format=3 uid="uid://56nn13kob6sb"]
 
 [ext_resource type="PackedScene" uid="uid://b0ou1g3lkc38k" path="res://character.tscn" id="1_05t2u"]
 [ext_resource type="Script" path="res://main.gd" id="1_b35a6"]
 [ext_resource type="Texture2D" uid="uid://qmggqdkj6mo" path="res://ART/showerwall.png" id="2_76sw5"]
 [ext_resource type="PackedScene" uid="uid://noeder0336va" path="res://area_2d.tscn" id="2_hkpfh"]
 [ext_resource type="Texture2D" uid="uid://bq7ftren7tuxe" path="res://ART/bathbottom.png" id="3_hvxq3"]
+[ext_resource type="Texture2D" uid="uid://nxj0pj5rr542" path="res://ART/bathcurtain.png" id="3_l0ble"]
 [ext_resource type="Texture2D" uid="uid://ddwps0s7jibad" path="res://ART/showerhead.png" id="3_tudhy"]
 [ext_resource type="PackedScene" uid="uid://bnkfu336xn6lw" path="res://main_scene_hud.tscn" id="4_g4yei"]
 [ext_resource type="Texture2D" uid="uid://csjk25cuvab6k" path="res://ART/bathtop.png" id="4_npwia"]
+[ext_resource type="Texture2D" uid="uid://cso766le3ennl" path="res://ART/bathtop2.png" id="10_3kys4"]
+[ext_resource type="Texture2D" uid="uid://dji8okq2oh58" path="res://ART/bathtop3.png" id="11_ou0qv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bs1k8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_3kys4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ou0qv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_npwia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_b35a6")
@@ -16,6 +36,13 @@ script = ExtResource("1_b35a6")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_76sw5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 199.0
+offset_top = -157.0
+offset_right = 669.0
+offset_bottom = 890.0
+texture = ExtResource("3_l0ble")
 
 [node name="showerhead" type="TextureRect" parent="."]
 offset_left = 1244.0
@@ -33,10 +60,10 @@ metadata/_edit_group_ = true
 [node name="CleaningTime" type="Timer" parent="."]
 
 [node name="tubback" type="TextureRect" parent="."]
-offset_left = 97.0
-offset_top = 470.0
-offset_right = 2097.0
-offset_bottom = 1332.0
+offset_left = 110.0
+offset_top = 466.0
+offset_right = 2110.0
+offset_bottom = 1328.0
 scale = Vector2(0.865, 0.865)
 texture = ExtResource("3_hvxq3")
 metadata/_edit_group_ = true
@@ -45,10 +72,11 @@ metadata/_edit_group_ = true
 gravity_scale = 0.0
 
 [node name="tubfront2" type="TextureRect" parent="."]
-offset_left = 96.0
-offset_top = 470.0
-offset_right = 2096.0
-offset_bottom = 1332.0
+visible = false
+offset_left = 111.0
+offset_top = 466.0
+offset_right = 2111.0
+offset_bottom = 1328.0
 scale = Vector2(0.865, 0.865)
 texture = ExtResource("4_npwia")
 metadata/_edit_group_ = true
@@ -61,8 +89,18 @@ score_multiplier = 3000
 
 [node name="angerincrement" type="Timer" parent="."]
 
+[node name="tubfrontanim" type="AnimatedSprite2D" parent="."]
+position = Vector2(975, 838)
+scale = Vector2(1.171, 1.171)
+sprite_frames = SubResource("SpriteFrames_bs1k8")
+frame_progress = 0.856991
+
+[node name="winceTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="anger" from="Sponge" to="." method="_on_sponge_anger"]
 [connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]
 [connection signal="buttonPressed" from="mainSceneHud" to="." method="_on_main_scene_hud_button_pressed"]
 [connection signal="restartPressed" from="mainSceneHud" to="." method="_on_main_scene_hud_restart_pressed"]
 [connection signal="timeout" from="angerincrement" to="." method="_on_angerincrement_timeout"]
+[connection signal="timeout" from="winceTimer" to="." method="_on_wince_timer_timeout"]

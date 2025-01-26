@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		if position.y < 10:
 			linear_velocity.y = max(linear_velocity.y, 0)
 		else:
-			linear_velocity.y = -500
+			linear_velocity.y = -700
 		
 
 
