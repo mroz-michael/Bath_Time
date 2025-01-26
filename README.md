@@ -6,11 +6,11 @@ The theme of this year's jam was "Bubbles" and we created our game using Godot, 
 Our game is about cleaning a stereotypical Computer Science student (cuz we smell..), and our art
 was inspired by South Park.  
 
-[+]: How to play:
+[]: How to play:
 
-You'll start by trying to scrub the student as quick as possible, filling up the clean meter.
++ You'll start by trying to scrub the student as quick as possible, filling up the clean meter.
 If he gets angry (i.e. angry meter bar goes up), calm him down by letting him play minigames on his
 tablet. 
 
-The better you perform in the minigames, the more time you'll have to clean him, without him getting 
++ The better you perform in the minigames, the more time you'll have to clean him, without him getting 
 angry again >:(
