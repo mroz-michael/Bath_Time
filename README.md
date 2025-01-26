@@ -10,8 +10,8 @@ was inspired by South Park.
 
 + Open the link here to download our game: https://globalgamejam.org/games/2025/bath-time-5
 
-+ Unpack the .zip file and run "Bath Time.exe" to play! Alt+f4 to close the game, or alt+tab to
-switch windows and close it.
++ Unpack the .zip file and run "Bath Time.exe" to play! `Alt + F4` to close the game, or `Alt + Tab`
+to switch windows and close it.
 
 [+]: How to play
 
