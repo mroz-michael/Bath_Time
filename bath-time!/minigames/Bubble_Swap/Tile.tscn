@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://drkjhpx125pkh"]
+
+[ext_resource type="Script" path="res://minigames/Bubble_Swap/tile.gd" id="1_awf1n"]
+[ext_resource type="Texture2D" uid="uid://c7a5i60q0a5in" path="res://minigames/Bubble_Swap/assets/tile_with_bubble.jpg" id="2_jlao5"]
+[ext_resource type="Texture2D" uid="uid://d18lsms8hfhvq" path="res://minigames/Bubble_Swap/assets/tile_without_bubble.jpg" id="3_u3cmq"]
+
+[node name="Tile" type="Sprite2D"]
+position = Vector2(450, 300)
+scale = Vector2(1.46296, 1.47248)
+texture = ExtResource("2_jlao5")
+script = ExtResource("1_awf1n")
+tile_without_bubble = ExtResource("3_u3cmq")
+tile_with_bubble = ExtResource("2_jlao5")

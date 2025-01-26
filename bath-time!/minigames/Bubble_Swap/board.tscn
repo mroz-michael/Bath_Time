@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct5ma2ol72bu5"]
+
+[ext_resource type="Texture2D" uid="uid://dnw5gmblgr7gt" path="res://minigames/Bubble_Swap/assets/grid.png" id="1_thejl"]
+
+[node name="Board" type="Sprite2D"]
+position = Vector2(444, 300)
+scale = Vector2(1.48, 1)
+texture = ExtResource("1_thejl")
