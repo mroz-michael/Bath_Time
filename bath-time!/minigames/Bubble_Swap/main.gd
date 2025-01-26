@@ -13,14 +13,16 @@ var tile_coordinate: Vector2;
 var grid = []
 var score: int;
 var click_count = 0;
-var optimal_solution: int; #num of moves from initial solved state to player's starting configuration
-var time_allowed = 10;
+var good_solution: int; #num of moves from initial solved state to player's starting configuration
+var time_allowed = 30;
 var game_active = true;
 
 func _ready():
 	# UI info
 	board_size = 600;
 	tile_size = board_size / GRID_SIZE
+
+	countdown.add_theme_font_size_override("font_size", 64);
 	
 	for i in range(GRID_SIZE):
 		var row = []
@@ -44,6 +46,8 @@ func _ready():
 func _process(delta: float) -> void:
 	if not timer.is_stopped() and game_active:
 		countdown.text = str(round(timer.time_left));
+		if timer.time_left <= 10:
+			countdown.add_theme_color_override("font_color", Color(1, 0, 0));
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -56,15 +60,13 @@ func _input(event):
 				tile_coordinate = tile_coordinate.floor() 
 				toggle_tile(tile_coordinate.x, tile_coordinate.y)
 
-#go from a solved state to an unsolved state starting configuration
+#go from a solved state to a random unsolved starting configuration
 func shuffle_grid():
 	var shuffle_count = randi() % 10 + 5
-	optimal_solution = shuffle_count;
-	print(optimal_solution);
+	good_solution = shuffle_count;
 	for i in range(shuffle_count):
 		var x = randi() % GRID_SIZE
 		var y = randi() % GRID_SIZE
-		print("toggle [",y, ", ",x , "]" )
 		toggle_tile(x, y)
 
 func toggle_tile(x, y):
@@ -96,14 +98,18 @@ func solved():
 	
 func game_over(solved):
 	game_active = false;
-	if (solved and click_count == optimal_solution):
-		score = 10;
+	countdown.remove_theme_color_override("font_color");
+	countdown.remove_theme_font_size_override("font_size");
+	if (solved and click_count <= good_solution):
+		countdown.text = "AMAZING! You solved the puzzle in very few moves!"
+		score = 12;
 	elif (solved):
-		score = 5;
+		countdown.text = "Great job solving the puzzle!"
+		score = 8;
 	else:
-		var fstring = "Time's Up! You clicked {click_count} times. The optimal solution required {optimal_solution} clicks"
-		countdown.text = fstring.format({"click_count": click_count, "optimal_solution": optimal_solution}) 
-		score = 2;
+		var fstring = "Time's Up! You clicked {click_count} times. An almost optimal solution required roughly {good_solution} clicks"
+		countdown.text = fstring.format({"click_count": click_count, "good_solution": good_solution}) 
+		score = 3;
 	
 	#return score as weighted_score for main game, give control back to main game
 
