@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ou1g3lkc38k"]
+[gd_scene load_steps=7 format=3 uid="uid://b0ou1g3lkc38k"]
 
 [ext_resource type="Texture2D" uid="uid://d18qi485rawki" path="res://ART/computerguy.png" id="1_kr7lv"]
+[ext_resource type="Texture2D" uid="uid://cllhbd1g5y4dl" path="res://ART/computerguy2.png" id="2_vg0in"]
+[ext_resource type="Texture2D" uid="uid://cgpxqf8hqx236" path="res://ART/computerguy3.png" id="3_thgr3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quav8"]
 radius = 341.0
@@ -15,10 +17,28 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_kr7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vg0in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_thgr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kr7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kr7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kr7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kr7lv")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [node name="character" type="RigidBody2D"]
@@ -38,3 +58,4 @@ debug_color = Color(0.3538, 0.486154, 0.98966, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2jddb")
+frame_progress = 0.351451

@@ -40,6 +40,7 @@ func new_game():
 func start_game():
 	Variablemanager.started = true
 	game_running = true
+	$character/AnimatedSprite2D.play()
 	$angerincrement.start()
 	gameHud()
 	
@@ -84,4 +85,4 @@ func set_progress(clean: float, angry: float):
 
 func _on_angerincrement_timeout() -> void:
 	if (anger_meter <= anger_threshold && game_running && $Sponge.mouse_speed > 1500):
-		anger_meter += 1
+		anger_meter += 1.0

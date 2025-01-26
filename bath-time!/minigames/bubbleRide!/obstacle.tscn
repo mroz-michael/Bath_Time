@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtlffijgbw7wl"]
 
 [ext_resource type="Script" path="res://minigames/bubbleRide!/obstacle.gd" id="1_61xc1"]
-[ext_resource type="Texture2D" uid="uid://bihi2bhsqrcg1" path="res://minigames/bubbleRide!/art/obstacleplaceholder.png" id="2_yyotb"]
+[ext_resource type="Texture2D" uid="uid://bxeo4xc56qbih" path="res://ART/bramble.png" id="2_0sw2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpblg"]
-size = Vector2(34.5, 320)
+size = Vector2(42, 534)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rlbs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_yyotb")
+"texture": ExtResource("2_0sw2w")
 }],
 "loop": true,
 "name": &"default",
@@ -18,21 +18,20 @@ animations = [{
 }]
 
 [node name="obstacle" type="Area2D"]
-position = Vector2(1784, 472)
+position = Vector2(1777, 533)
 script = ExtResource("1_61xc1")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15.8113, 1.06256)
+position = Vector2(-18, -22)
 shape = SubResource("RectangleShape2D_xpblg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-16.0313, 1.06256)
-scale = Vector2(0.187287, 0.550788)
+position = Vector2(-18, -20)
+scale = Vector2(0.664462, 0.67375)
 sprite_frames = SubResource("SpriteFrames_7rlbs")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-9.06128, 9.06256)
+position = Vector2(489, -9)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

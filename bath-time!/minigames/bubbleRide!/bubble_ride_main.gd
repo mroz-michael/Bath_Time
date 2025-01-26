@@ -68,13 +68,13 @@ func _on_bubbleridehud_start_game() -> void:
 
 func _on_exit_game_pressed() -> void:
 	if (score > 30):
-		weightedScore = 15
-	elif (score > 20 && score <= 30):
+		weightedScore = 15.0
+	elif (score > 20 && score <= 30.0):
 		weightedScore = 7.5
 	elif (score > 10 && score <= 20):
-		weightedScore = 5
+		weightedScore = 5.0
 	else:
-		weightedScore = 3
+		weightedScore = 3.0
 		
 	Variablemanager.anger_meter = Variablemanager.anger_meter - weightedScore
 	get_tree().change_scene_to_file("res://main.tscn")

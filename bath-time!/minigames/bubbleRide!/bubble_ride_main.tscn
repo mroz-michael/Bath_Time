@@ -34,6 +34,7 @@ texture = ExtResource("3_6rgh5")
 position = Vector2(2560, -536)
 
 [node name="obstacleSpawner" type="Path2D" parent="."]
+position = Vector2(1000.28, 0)
 curve = SubResource("Curve2D_qvba7")
 
 [node name="spawnlocation" type="PathFollow2D" parent="obstacleSpawner"]

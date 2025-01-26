@@ -1,6 +1,6 @@
 extends Node
 var anger_meter = 2.5
-var clean_progress = 0
+var clean_progress = 0.0
 var started = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
