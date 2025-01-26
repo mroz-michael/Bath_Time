@@ -69,7 +69,7 @@ func game_over():
 	$Sponge.hide()
 	$mainSceneHud/CleanBar.hide()
 	game_running = false
-	Variablemanager.globalscore = Variablemanager.globalscore / Variablemanager.gamesPlayed
+	#Variablemanager.globalscore = Variablemanager.globalscore / Variablemanager.gamesPlayed
 	$mainSceneHud/FinalScore.text = "Final Score (Minigame Scores / Minigames played)\n" + str(Variablemanager.globalscore)
 	$mainSceneHud/FinalScore.show()
 	$mainSceneHud/restart.show()

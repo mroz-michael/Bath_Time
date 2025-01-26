@@ -15,6 +15,7 @@ func _ready() -> void:
 func ready_minigames() -> void:
 	Variablemanager.minigames.append("res://minigames/bubbleRide!/bubble_ride_main.tscn")
 	Variablemanager.minigames.append("res://minigames/Bubble_Swap/Main.tscn")
+	Variablemanager.minigames.append("res://minigames/maze101/maze.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
