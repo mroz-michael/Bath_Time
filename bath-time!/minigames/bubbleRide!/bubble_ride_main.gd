@@ -39,6 +39,7 @@ func _on_start_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	Variablemanager.obstaclespeed -= 0.3
 	incrementScore.emit(1)
 	
 
@@ -75,6 +76,8 @@ func _on_exit_game_pressed() -> void:
 		weightedScore = 5.0
 	else:
 		weightedScore = 3.0
-		
+	if (Variablemanager.gameCounter < len(Variablemanager.minigames)):
+		Variablemanager.gameCounter += 1
 	Variablemanager.anger_meter = Variablemanager.anger_meter - weightedScore
+	Variablemanager.obstaclespeed = -10.0
 	get_tree().change_scene_to_file("res://main.tscn")

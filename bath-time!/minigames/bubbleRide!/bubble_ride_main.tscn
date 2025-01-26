@@ -52,6 +52,7 @@ one_shot = true
 position = Vector2(192, 936)
 
 [node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 0.9
 
 [node name="bubbleridehud" parent="." groups=["player"] instance=ExtResource("6_br42m")]
 
@@ -62,6 +63,7 @@ offset_bottom = 40.0
 texture = ExtResource("7_jvtn0")
 
 [node name="exitGame" type="Button" parent="."]
+z_index = 40
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

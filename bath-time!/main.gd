@@ -5,7 +5,6 @@ var anger_meter = Variablemanager.anger_meter
 const anger_threshold = 10.0
 var game_running = false
 var game_started = Variablemanager.started
-var minigames = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,23 +13,29 @@ func _ready() -> void:
 	$mainSceneHud/youwin.hide()
 	$mainSceneHud/CleanBar.value = clean_progress
 	$mainSceneHud/AngerBar.value = anger_meter
-	#$angerincrement.start()
+	print("length: ", len(Variablemanager.minigames))
+	if (Variablemanager.gameCounter >= len(Variablemanager.minigames)):
+		Variablemanager.gameCounter = 0
+	print(Variablemanager.gameCounter)
 func _on_cleaning(amount: float):
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	if (clean_progress > clean_goal):
 		game_over()
 	$mainSceneHud/CleanBar.value = clean_progress
 	$mainSceneHud/AngerBar.value = anger_meter
+	if Variablemanager.mouse_speed > 10000:
+		$character/AnimatedSprite2D.animation = "wince"
+		$winceTimer.start()
 	
 	
 	#launch a minigame here
 	if (anger_meter >= anger_threshold):
 		Variablemanager.anger_meter = anger_meter
 		Variablemanager.clean_progress = clean_progress
-		get_tree().change_scene_to_file("res://minigames/bubbleRide!/bubble_ride_main.tscn")
+		get_tree().change_scene_to_file(Variablemanager.minigames[Variablemanager.gameCounter])
 		#pass
 func new_game():
 	$Sponge.hide()
@@ -52,6 +57,7 @@ func gameHud():
 	$mainSceneHud/CleanBar.show()
 	$mainSceneHud/Instructions.hide()
 	$mainSceneHud/StartButton.hide()
+	$tubfrontanim.play()
 	
 	
 func game_over():
@@ -60,6 +66,7 @@ func game_over():
 	game_running = false
 	$mainSceneHud/restart.show()
 	$mainSceneHud/youwin.show()
+	$tubfrontanim.stop()
 	
 	
 #this function increments the player's cleaning progress
@@ -87,3 +94,7 @@ func set_progress(clean: float, angry: float):
 func _on_angerincrement_timeout() -> void:
 	if (anger_meter <= anger_threshold && game_running && $Sponge.mouse_speed > 1500):
 		anger_meter += 1.0
+
+
+func _on_wince_timer_timeout() -> void:
+	$character/AnimatedSprite2D.animation = "idle"
