@@ -5,6 +5,7 @@ var anger_meter = Variablemanager.anger_meter
 const anger_threshold = 10.0
 var game_running = false
 var game_started = Variablemanager.started
+var minigames = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
