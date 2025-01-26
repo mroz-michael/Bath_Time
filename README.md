@@ -8,6 +8,11 @@ was inspired by South Park.
 
 [+]: How to play:
 
++ Open the link here to download our game: https://globalgamejam.org/games/2025/bath-time-5
+
++ Unpack the .zip file and run "Bath Time.exe" to play! Alt+f4 to close the game, or alt+tab to
+switch windows and close it.
+
 + You'll start by trying to scrub the student as quick as possible, filling up the clean meter.
 If he gets angry (i.e. angry meter bar goes up), calm him down by letting him play minigames on his
 tablet. 
