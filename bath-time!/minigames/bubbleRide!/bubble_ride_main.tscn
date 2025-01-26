@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://vfh7noohvngv"]
+[gd_scene load_steps=10 format=3 uid="uid://vfh7noohvngv"]
 
 [ext_resource type="PackedScene" uid="uid://d16hlet1bpts5" path="res://minigames/bubbleRide!/Bubblepack.tscn" id="1_1hg8v"]
 [ext_resource type="Script" path="res://minigames/bubbleRide!/bubble_ride_main.gd" id="1_hn5pe"]
 [ext_resource type="PackedScene" uid="uid://dtlffijgbw7wl" path="res://minigames/bubbleRide!/obstacle.tscn" id="2_4felk"]
-[ext_resource type="Texture2D" uid="uid://cwmnr4cwjenbe" path="res://minigames/bubbleRide!/art/backgroundtemp.png" id="3_6rgh5"]
 [ext_resource type="Script" path="res://minigames/bubbleRide!/background.gd" id="3_utsvg"]
+[ext_resource type="Texture2D" uid="uid://dlokmqnpttfxq" path="res://ART/bigforest.png" id="4_olu4s"]
 [ext_resource type="PackedScene" uid="uid://d2qfx6s1o6n7e" path="res://minigames/bubbleRide!/bubbleridehud.tscn" id="6_br42m"]
 [ext_resource type="Texture2D" uid="uid://xkwp4r8svsj2" path="res://ART/tabletscreen.png" id="7_jvtn0"]
+[ext_resource type="AudioStream" uid="uid://bp1tlu1i4ikyr" path="res://music/jetpack.mp3" id="8_nbp14"]
 
 [sub_resource type="Curve2D" id="Curve2D_qvba7"]
 _data = {
@@ -22,12 +23,8 @@ obstacle_scene = ExtResource("2_4felk")
 script = ExtResource("3_utsvg")
 
 [node name="Sprite2D" type="Sprite2D" parent="background"]
-position = Vector2(2501, 540)
-texture = ExtResource("3_6rgh5")
-
-[node name="Sprite2D2" type="Sprite2D" parent="background"]
-position = Vector2(7500, 540)
-texture = ExtResource("3_6rgh5")
+position = Vector2(15354, 544)
+texture = ExtResource("4_olu4s")
 
 [node name="obstacleSpawner" type="Path2D" parent="."]
 position = Vector2(1000.28, 0)
@@ -77,6 +74,9 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "OK"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nbp14")
 
 [connection signal="incrementScore" from="." to="bubbleridehud" method="_on_bubble_ride_main_increment_score"]
 [connection signal="hit" from="BubblePack" to="." method="game_over"]

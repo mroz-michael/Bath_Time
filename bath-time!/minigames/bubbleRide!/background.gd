@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var scroll_speed: float = 150.0  # Scrolling speed
-@export var texture_width: float = 1500  # Texture width
+@export var texture_width: float = 10000000000 # Texture width
 
 func _process(delta: float) -> void:
 	if get_parent().playing == false:

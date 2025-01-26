@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1eepbcut4dkg"
-path="res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"
+uid="uid://c7a5i60q0a5in"
+path="res://.godot/imported/tile_with_bubble.jpg-fe0b22b8ae061cd1dc4871ab1e17a641.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/bubble1.png"
-dest_files=["res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"]
+source_file="res://minigames/Bubble_Swap/assets/tile_with_bubble.jpg"
+dest_files=["res://.godot/imported/tile_with_bubble.jpg-fe0b22b8ae061cd1dc4871ab1e17a641.ctex"]
 
 [params]
 

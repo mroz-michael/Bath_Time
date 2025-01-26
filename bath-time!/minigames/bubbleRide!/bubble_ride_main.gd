@@ -7,6 +7,7 @@ signal incrementScore(second: int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$exitGame.hide()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +19,7 @@ func new_game():
 	playing = true
 	$StartTimer.start()
 	$background.scroll_speed = 150.0
+	$music.play()
 	
 func game_over() -> void:
 	playing = false
@@ -80,4 +82,5 @@ func _on_exit_game_pressed() -> void:
 		Variablemanager.gameCounter += 1
 	Variablemanager.anger_meter = Variablemanager.anger_meter - weightedScore
 	Variablemanager.obstaclespeed = -10.0
+	Variablemanager.globalscore += weightedScore
 	get_tree().change_scene_to_file("res://main.tscn")

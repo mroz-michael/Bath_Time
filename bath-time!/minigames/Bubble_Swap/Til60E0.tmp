@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cslki3m6tekot"]
+
+[ext_resource type="Script" path="res://minigames/Bubble_Swap/tile.gd" id="1_awf1n"]
+[ext_resource type="Texture2D" uid="uid://c7a5i60q0a5in" path="res://minigames/Bubble_Swap/assets/tile_with_bubble.jpg" id="2_jlao5"]
+[ext_resource type="Texture2D" uid="uid://d18lsms8hfhvq" path="res://minigames/Bubble_Swap/assets/tile_without_bubble.jpg" id="3_u3cmq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5p63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jlao5")
+}],
+"loop": true,
+"name": &"tile_with_bubble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u3cmq")
+}],
+"loop": true,
+"name": &"tile_without_bubble",
+"speed": 5.0
+}]
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_awf1n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(165, 171)
+rotation = 6.28319
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_t5p63")
+animation = &"tile_without_bubble"
