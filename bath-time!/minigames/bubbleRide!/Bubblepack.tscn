@@ -1,37 +1,36 @@
 [gd_scene load_steps=5 format=3 uid="uid://d16hlet1bpts5"]
 
 [ext_resource type="Script" path="res://minigames/bubbleRide!/bubblepack.gd" id="1_d0ljw"]
-[ext_resource type="Texture2D" uid="uid://dhqa216ib16ha" path="res://ART/liljetguy.png" id="2_6hrg0"]
+[ext_resource type="Texture2D" uid="uid://dxnp21ypdejkl" path="res://ART/beanbubbleguy.png" id="2_ok148"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0u1c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6hrg0")
+"texture": ExtResource("2_ok148")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f104y"]
-radius = 194.937
-height = 805.063
+[sub_resource type="CircleShape2D" id="CircleShape2D_n88up"]
+radius = 266.849
 
 [node name="BubblePack" type="RigidBody2D" groups=["player"]]
-position = Vector2(414, 711)
+position = Vector2(479, 745)
 gravity_scale = 2.219
 script = ExtResource("1_d0ljw")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.111, 0.193)
+position = Vector2(-19.5, -2.204)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_a0u1c")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.28076, 7.75446)
+position = Vector2(-20, -3)
 scale = Vector2(0.168635, 0.170167)
-shape = SubResource("CapsuleShape2D_f104y")
+shape = SubResource("CircleShape2D_n88up")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
