@@ -39,11 +39,12 @@ func _ready():
 	#incase shuffle solves grid, reshuffle:
 	while (solved()):
 		shuffle_grid();
+	game_active = true;
 	timer.wait_time = time_allowed;
-	countdown.text = str(timer.wait_time);
 	timer.start();
+	countdown.text = str(timer.wait_time);
 
-func _process(delta: float) -> void:
+func _process(delta: float):
 	if not timer.is_stopped() and game_active:
 		countdown.text = str(round(timer.time_left));
 		if timer.time_left <= 10:
