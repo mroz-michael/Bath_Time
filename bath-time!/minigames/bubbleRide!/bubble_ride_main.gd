@@ -1,12 +1,12 @@
 extends Node
 @export var obstacle_scene: PackedScene
 var score = 0
+var weightedScore = 0.0
 var playing = false
 signal incrementScore(second: int)
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$exitGame.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +26,7 @@ func game_over() -> void:
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
 	$background.scroll_speed = 0.0
+	$exitGame.show()
 	
 	
 
@@ -63,3 +64,17 @@ func _on_obstacle_obstacle_hit() -> void:
 
 func _on_bubbleridehud_start_game() -> void:
 	new_game()
+
+
+func _on_exit_game_pressed() -> void:
+	if (score > 30):
+		weightedScore = 15
+	elif (score > 20 && score <= 30):
+		weightedScore = 7.5
+	elif (score > 10 && score <= 20):
+		weightedScore = 5
+	else:
+		weightedScore = 3
+		
+	Variablemanager.anger_meter = Variablemanager.anger_meter - weightedScore
+	get_tree().change_scene_to_file("res://main.tscn")

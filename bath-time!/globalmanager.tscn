@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kd6jpcnvku2o"]
+
+[ext_resource type="Script" path="res://variablemanager.gd" id="1_ehuoe"]
+
+[node name="globalmanager" type="Node"]
+script = ExtResource("1_ehuoe")
