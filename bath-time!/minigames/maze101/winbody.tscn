@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://da14l4ata0qgv"]
+
+[ext_resource type="Script" path="res://winbody.gd" id="1_6k0xm"]
+[ext_resource type="Texture2D" uid="uid://gymijs2r2vkc" path="res://icon.svg" id="1_l53r2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3k1o"]
+size = Vector2(129, 128)
+
+[node name="winbody" type="CharacterBody2D" groups=["goal"]]
+scale = Vector2(0.3, 0.3)
+collision_layer = 4
+script = ExtResource("1_6k0xm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l53r2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_b3k1o")

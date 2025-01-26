@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g2miwbj6t3e1"]
+
+[ext_resource type="Script" path="res://minigames/Bubble_Swap/map.gd" id="1_hgqwc"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_hgqwc")

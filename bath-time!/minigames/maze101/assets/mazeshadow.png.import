@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1eepbcut4dkg"
-path="res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"
+uid="uid://ddplu5imnkt0b"
+path="res://.godot/imported/mazeshadow.png-e6d918c1dc73d472393d35328790a9fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/bubble1.png"
-dest_files=["res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"]
+source_file="res://minigames/maze101/assets/mazeshadow.png"
+dest_files=["res://.godot/imported/mazeshadow.png-e6d918c1dc73d472393d35328790a9fd.ctex"]
 
 [params]
 

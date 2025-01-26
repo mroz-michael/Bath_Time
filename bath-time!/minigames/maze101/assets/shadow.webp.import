@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1eepbcut4dkg"
-path="res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"
+uid="uid://bjsevlu17rsks"
+path="res://.godot/imported/shadow.webp-78de3e970542c61b33db6f3f90fa88f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/bubble1.png"
-dest_files=["res://.godot/imported/bubble1.png-f05de6b68337b8c71d1d2c4dfa246b84.ctex"]
+source_file="res://minigames/maze101/assets/shadow.webp"
+dest_files=["res://.godot/imported/shadow.webp-78de3e970542c61b33db6f3f90fa88f5.ctex"]
 
 [params]
 

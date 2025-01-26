@@ -131,5 +131,25 @@ theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 64
 text = "Restart"
 
+[node name="TotalScore" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 608.0
+offset_bottom = 152.0
+theme_override_constants/outline_size = 35
+theme_override_font_sizes/font_size = 64
+text = "Total score: "
+vertical_alignment = 1
+
+[node name="FinalScore" type="Label" parent="."]
+offset_left = 200.0
+offset_top = 632.0
+offset_right = 1714.0
+offset_bottom = 736.0
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "Final Score (Minigame Scores / Minigames played)"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

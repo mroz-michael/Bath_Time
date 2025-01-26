@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyy27jfx4tkyx"]
+
+[ext_resource type="Texture2D" uid="uid://c7a5i60q0a5in" path="res://minigames/Bubble_Swap/assets/tile_with_bubble.jpg" id="1_my8f0"]
+
+[node name="Bubble" type="Sprite2D"]
+texture = ExtResource("1_my8f0")

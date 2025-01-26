@@ -9,6 +9,10 @@ var game_started = Variablemanager.started
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_game()
+	$music.play()
+	$mainSceneHud/FinalScore.hide()
+	$mainSceneHud/TotalScore.show()
+	$mainSceneHud/TotalScore.text = "Score: " + str(Variablemanager.globalscore)
 	$mainSceneHud/restart.hide()
 	$mainSceneHud/youwin.hide()
 	$mainSceneHud/CleanBar.value = clean_progress
@@ -35,6 +39,7 @@ func _process(delta: float) -> void:
 	if (anger_meter >= anger_threshold):
 		Variablemanager.anger_meter = anger_meter
 		Variablemanager.clean_progress = clean_progress
+		Variablemanager.gamesPlayed += 1
 		get_tree().change_scene_to_file(Variablemanager.minigames[Variablemanager.gameCounter])
 		#pass
 func new_game():
@@ -64,6 +69,9 @@ func game_over():
 	$Sponge.hide()
 	$mainSceneHud/CleanBar.hide()
 	game_running = false
+	#Variablemanager.globalscore = Variablemanager.globalscore / Variablemanager.gamesPlayed
+	$mainSceneHud/FinalScore.text = "Final Score\n" + str(Variablemanager.globalscore)
+	$mainSceneHud/FinalScore.show()
 	$mainSceneHud/restart.show()
 	$mainSceneHud/youwin.show()
 	$tubfrontanim.stop()
