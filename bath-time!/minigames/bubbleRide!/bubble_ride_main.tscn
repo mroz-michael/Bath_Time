@@ -53,9 +53,20 @@ position = Vector2(192, 936)
 
 [node name="bubbleridehud" parent="." groups=["player"] instance=ExtResource("6_br42m")]
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="exitGame" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -144.0
+offset_right = 59.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "OK"
 
 [connection signal="incrementScore" from="." to="bubbleridehud" method="_on_bubble_ride_main_increment_score"]
 [connection signal="hit" from="BubblePack" to="." method="game_over"]
@@ -64,3 +75,4 @@ offset_bottom = 8.0
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="start_game" from="bubbleridehud" to="." method="_on_bubbleridehud_start_game"]
+[connection signal="pressed" from="exitGame" to="." method="_on_exit_game_pressed"]

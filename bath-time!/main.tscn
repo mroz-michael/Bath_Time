@@ -59,6 +59,10 @@ score_multiplier = 3000
 
 [node name="mainSceneHud" parent="." instance=ExtResource("4_g4yei")]
 
+[node name="angerincrement" type="Timer" parent="."]
+
 [connection signal="anger" from="Sponge" to="." method="_on_sponge_anger"]
 [connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]
 [connection signal="buttonPressed" from="mainSceneHud" to="." method="_on_main_scene_hud_button_pressed"]
+[connection signal="restartPressed" from="mainSceneHud" to="." method="_on_main_scene_hud_restart_pressed"]
+[connection signal="timeout" from="angerincrement" to="." method="_on_angerincrement_timeout"]

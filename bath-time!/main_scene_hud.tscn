@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnkfu336xn6lw"]
+[gd_scene load_steps=4 format=3 uid="uid://bnkfu336xn6lw"]
 
 [ext_resource type="Script" path="res://main_scene_hud.gd" id="1_63pjm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12aob"]
+bg_color = Color(0.354667, 0.76, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th2xp"]
+bg_color = Color(0.896733, 0, 0.0904732, 1)
 
 [node name="mainSceneHud" type="CanvasLayer"]
 script = ExtResource("1_63pjm")
@@ -15,6 +21,7 @@ offset_right = 698.0
 offset_bottom = -52.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
+theme_override_styles/fill = SubResource("StyleBoxFlat_12aob")
 
 [node name="CleanMeter" type="Label" parent="CleanBar"]
 layout_mode = 1
@@ -26,6 +33,7 @@ offset_top = -142.0
 offset_right = 544.0
 offset_bottom = -47.0
 grow_vertical = 2
+theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 64
 text = "Clean meter"
 horizontal_alignment = 1
@@ -45,6 +53,7 @@ offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
+theme_override_styles/fill = SubResource("StyleBoxFlat_th2xp")
 max_value = 10.0
 show_percentage = false
 
@@ -58,6 +67,7 @@ offset_top = 15.9639
 offset_right = 536.0
 offset_bottom = 110.964
 grow_vertical = 2
+theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 64
 text = "Anger meter"
 horizontal_alignment = 1
@@ -102,4 +112,24 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "START"
 
+[node name="youwin" type="Label" parent="."]
+offset_left = 832.0
+offset_top = 488.0
+offset_right = 1095.0
+offset_bottom = 576.0
+theme_override_constants/outline_size = 35
+theme_override_font_sizes/font_size = 64
+text = "You win!"
+horizontal_alignment = 1
+
+[node name="restart" type="Button" parent="."]
+offset_left = 808.0
+offset_top = 776.0
+offset_right = 1128.0
+offset_bottom = 872.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

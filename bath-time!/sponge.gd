@@ -4,7 +4,7 @@ var mouse_speed = 0.0
 var mouse_coordDiff = 0.0
 var mouse_prevPos = Vector2.ZERO
 var is_cleaning = false
-@export var score_multiplier = 500
+@export var score_multiplier = 300
 var real_score_multiplier = score_multiplier * 250
 signal cleaning(amount: float)
 signal anger(amount: float)
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	if (is_cleaning && (mouse_speed > 1500)):
 		hit.emit()
 		cleaning.emit(mouse_speed / real_score_multiplier)
-		anger.emit(0.025)
+		anger.emit(1)
 
 
 func _on_body_entered(body: Node2D) -> void:
