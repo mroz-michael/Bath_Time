@@ -3,6 +3,8 @@ extends Node2D
 @export var tile_without_bubble: Texture2D
 @export var tile_with_bubble: Texture2D
 @onready var TileScene = preload("res://minigames/Bubble_Swap/Tile.tscn");
+@onready var timer = $Timer;
+@onready var countdown = $ClockLabel;
 
 const GRID_SIZE = 3;
 var board_size: int;
@@ -12,6 +14,8 @@ var grid = []
 var score: int;
 var click_count = 0;
 var optimal_solution: int; #num of moves from initial solved state to player's starting configuration
+var time_allowed = 10;
+var game_active = true;
 
 func _ready():
 	# UI info
@@ -28,8 +32,18 @@ func _ready():
 			tile.position = Vector2(j * tile_size + tile_size / 2, i * tile_size + tile_size / 2)
 			add_child(tile)
 			row.append(tile)
-	
+	#go from solved state to starting state
 	shuffle_grid();
+	#incase shuffle solves grid, reshuffle:
+	while (solved()):
+		shuffle_grid();
+	timer.wait_time = time_allowed;
+	countdown.text = str(timer.wait_time);
+	timer.start();
+
+func _process(delta: float) -> void:
+	if not timer.is_stopped() and game_active:
+		countdown.text = str(round(timer.time_left));
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -81,13 +95,19 @@ func solved():
 	return true
 	
 func game_over(solved):
+	game_active = false;
 	if (solved and click_count == optimal_solution):
 		score = 10;
 	elif (solved):
 		score = 5;
 	else:
+		var fstring = "Time's Up! You clicked {click_count} times. The optimal solution required {optimal_solution} clicks"
+		countdown.text = fstring.format({"click_count": click_count, "optimal_solution": optimal_solution}) 
 		score = 2;
 	
-## WEIGHTED_SCORE STUFF
-#func find_score_weight:
-	#if (score > )
+	#return score as weighted_score for main game, give control back to main game
+
+
+func _on_timer_timeout():
+	game_over(false);
+	
