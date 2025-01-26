@@ -43,4 +43,5 @@ func _on_start_pressed():
 	$player/instructions.hide()
 	$player/start.hide()
 	$player/Timer.start()
+	$player/AudioStreamPlayer.play()
 	

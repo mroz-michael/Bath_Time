@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://56nn13kob6sb"]
+[gd_scene load_steps=21 format=4 uid="uid://56nn13kob6sb"]
 
 [ext_resource type="PackedScene" uid="uid://b0ou1g3lkc38k" path="res://character.tscn" id="1_05t2u"]
 [ext_resource type="Script" path="res://main.gd" id="1_b35a6"]
@@ -9,8 +9,41 @@
 [ext_resource type="Texture2D" uid="uid://ddwps0s7jibad" path="res://ART/showerhead.png" id="3_tudhy"]
 [ext_resource type="PackedScene" uid="uid://bnkfu336xn6lw" path="res://main_scene_hud.tscn" id="4_g4yei"]
 [ext_resource type="Texture2D" uid="uid://csjk25cuvab6k" path="res://ART/bathtop.png" id="4_npwia"]
+[ext_resource type="Texture2D" uid="uid://dsm6jpwuiv45d" path="res://ART/showerstream2.png" id="6_6l4ld"]
+[ext_resource type="Texture2D" uid="uid://deleg0a57k72u" path="res://ART/showerstream.png" id="7_lmj2a"]
 [ext_resource type="Texture2D" uid="uid://cso766le3ennl" path="res://ART/bathtop2.png" id="10_3kys4"]
 [ext_resource type="Texture2D" uid="uid://dji8okq2oh58" path="res://ART/bathtop3.png" id="11_ou0qv"]
+[ext_resource type="Texture2D" uid="uid://b51htogiva3aa" path="res://ART/titletext.png" id="14_oqks1"]
+[ext_resource type="Texture2D" uid="uid://befcduyrontd0" path="res://ART/ducky2.png" id="15_vkxr2"]
+[ext_resource type="Texture2D" uid="uid://cbq7w38iacwjo" path="res://ART/ducky3.png" id="16_dl654"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m34rr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6l4ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lmj2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yda0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_vkxr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dl654")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bs1k8"]
 animations = [{
@@ -72,6 +105,11 @@ scale = Vector2(0.865, 0.865)
 texture = ExtResource("3_hvxq3")
 metadata/_edit_group_ = true
 
+[node name="sprinkle" type="AnimatedSprite2D" parent="."]
+position = Vector2(1292, 611)
+sprite_frames = SubResource("SpriteFrames_m34rr")
+frame_progress = 0.372891
+
 [node name="character" parent="." instance=ExtResource("1_05t2u")]
 gravity_scale = 0.0
 
@@ -93,6 +131,13 @@ score_multiplier = 3000
 
 [node name="angerincrement" type="Timer" parent="."]
 
+[node name="duck" type="AnimatedSprite2D" parent="."]
+position = Vector2(468, 659.91)
+rotation = -3.14159
+scale = Vector2(0.68, -0.68)
+sprite_frames = SubResource("SpriteFrames_yda0f")
+frame_progress = 0.565516
+
 [node name="tubfrontanim" type="AnimatedSprite2D" parent="."]
 position = Vector2(975, 838)
 scale = Vector2(1.171, 1.171)
@@ -104,6 +149,18 @@ wait_time = 0.5
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_myvqn")
+
+[node name="title" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -648.0
+offset_top = 200.0
+offset_right = 1272.0
+offset_bottom = 494.0
+grow_horizontal = 2
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("14_oqks1")
 
 [connection signal="anger" from="Sponge" to="." method="_on_sponge_anger"]
 [connection signal="cleaning" from="Sponge" to="." method="_on_sponge_cleaning"]
