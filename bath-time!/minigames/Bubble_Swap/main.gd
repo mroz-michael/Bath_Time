@@ -5,6 +5,8 @@ extends Node2D
 @onready var TileScene = preload("res://minigames/Bubble_Swap/Tile.tscn");
 @onready var timer = $Timer;
 @onready var countdown = $ClockLabel;
+@onready var exit_button = $exit_button;
+@onready var game_over_text = $GameOverText;
 
 const GRID_SIZE = 3;
 var board_size: int;
@@ -21,7 +23,8 @@ func _ready():
 	# UI info
 	board_size = 600;
 	tile_size = board_size / GRID_SIZE
-
+	exit_button.hide()
+	game_over_text.hide()
 	countdown.add_theme_font_size_override("font_size", 64);
 	
 	for i in range(GRID_SIZE):
@@ -39,7 +42,7 @@ func _ready():
 	#incase shuffle solves grid, reshuffle:
 	while (solved()):
 		shuffle_grid();
-	game_active = true;
+	game_active = true; 
 	timer.wait_time = time_allowed;
 	timer.start();
 	countdown.text = str(timer.wait_time);
@@ -68,9 +71,9 @@ func shuffle_grid():
 	for i in range(shuffle_count):
 		var x = randi() % GRID_SIZE
 		var y = randi() % GRID_SIZE
-		toggle_tile(x, y)
+		toggle_tile(x, y, true)
 
-func toggle_tile(x, y):
+func toggle_tile(x, y, prep=false):
 	
 	grid[y][x].swap_val()
 	#Toggle all neighbours if exist
@@ -87,7 +90,7 @@ func toggle_tile(x, y):
 	if has_bot:
 		grid[y + 1][x].swap_val()
 	
-	if solved():
+	if solved() and not prep:
 		game_over(true);
 
 func solved():
@@ -99,22 +102,34 @@ func solved():
 	
 func game_over(solved):
 	game_active = false;
-	countdown.remove_theme_color_override("font_color");
-	countdown.remove_theme_font_size_override("font_size");
-	if (solved and click_count <= good_solution):
-		countdown.text = "AMAZING! You solved the puzzle in very few moves!"
+	$Board.hide();
+	for row in grid:
+		for tile in row:
+			remove_child(tile)
+	exit_button.show();
+	countdown.hide();
+	game_over_text.show();
+	exit_button.text = "Get Back to Scrubbing"
+	exit_button.theme
+	add_child(exit_button);
+	var final_clickcount = click_count;
+	if (solved and final_clickcount <= good_solution):
+		game_over_text.text = "AMAZING! You solved the puzzle in very few moves!"
 		score = 12;
 	elif (solved):
-		countdown.text = "Great job solving the puzzle!"
+		game_over_text.text = "Great job solving the puzzle!"
 		score = 8;
 	else:
 		var fstring = "Time's Up! You clicked {click_count} times. An almost optimal solution required roughly {good_solution} clicks"
-		countdown.text = fstring.format({"click_count": click_count, "good_solution": good_solution}) 
+		game_over_text.text = fstring.format({"click_count": click_count, "good_solution": good_solution}) 
 		score = 3;
-	
-	#return score as weighted_score for main game, give control back to main game
-
 
 func _on_timer_timeout():
 	game_over(false);
 	
+#return score as weighted_score for main game, give control back to main game
+func _on_exit_button_pressed() -> void:
+	#Variablemanager.anger_meter = Variablemanager.anger_meter - score;
+	#1920 x 1080
+	get_window().size = Vector2i(1920, 1080)
+	get_tree().change_scene_to_file("res://main.tscn");
