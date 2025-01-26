@@ -7,7 +7,10 @@ extends Node2D
 @onready var countdown = $ClockLabel;
 @onready var exit_button = $exit_button;
 @onready var game_over_text = $GameOverText;
-var weightedScore= 0
+@onready var title_screen = $TitleScreen;
+@onready var start_button = $start_button;
+
+
 const GRID_SIZE = 3;
 var board_size: int;
 var tile_size: int;
@@ -17,7 +20,7 @@ var score: int;
 var click_count = 0;
 var good_solution: int; #num of moves from initial solved state to player's starting configuration
 var time_allowed = 30;
-var game_active = true;
+var game_active = false;
 
 func _ready():
 	# UI info
@@ -25,27 +28,12 @@ func _ready():
 	tile_size = board_size / GRID_SIZE
 	exit_button.hide()
 	game_over_text.hide()
+	countdown.hide()
+	$Board.hide()
 	countdown.add_theme_font_size_override("font_size", 64);
-	
-	for i in range(GRID_SIZE):
-		var row = []
-		grid.append(row)
-		for j in range(GRID_SIZE):
-			var tile = TileScene.instantiate()
-			tile.set_val(1)
-			# Set tile position centered within its cell
-			tile.position = Vector2(j * tile_size + tile_size / 2, i * tile_size + tile_size / 2)
-			add_child(tile)
-			row.append(tile)
-	#go from solved state to starting state
-	shuffle_grid();
-	#incase shuffle solves grid, reshuffle:
-	while (solved()):
-		shuffle_grid();
-	game_active = true; 
-	timer.wait_time = time_allowed;
-	timer.start();
-	countdown.text = str(timer.wait_time);
+	start_button.text = "START"
+	$music.play()
+
 
 func _process(delta: float):
 	if not timer.is_stopped() and game_active:
@@ -54,7 +42,7 @@ func _process(delta: float):
 			countdown.add_theme_color_override("font_color", Color(1, 0, 0));
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if game_active and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if event.position.x < board_size:
 				click_count += 1;
@@ -103,15 +91,12 @@ func solved():
 func game_over(solved):
 	game_active = false;
 	$Board.hide();
+	$music.stop()
 	for row in grid:
 		for tile in row:
 			remove_child(tile)
-	exit_button.show();
 	countdown.hide();
 	game_over_text.show();
-	exit_button.text = "Get Back to Scrubbing"
-	exit_button.theme
-	add_child(exit_button);
 	var final_clickcount = click_count;
 	if (solved and final_clickcount <= good_solution):
 		game_over_text.text = "AMAZING! You solved the puzzle in very few moves!"
@@ -123,6 +108,10 @@ func game_over(solved):
 		var fstring = "Time's Up! You clicked {click_count} times. An almost optimal solution required roughly {good_solution} clicks"
 		game_over_text.text = fstring.format({"click_count": click_count, "good_solution": good_solution}) 
 		score = 3;
+	await get_tree().create_timer(1).timeout;
+	add_child(exit_button);
+	exit_button.text = "Get Back to Scrubbing"
+	exit_button.show();
 
 func _on_timer_timeout():
 	game_over(false);
@@ -137,3 +126,28 @@ func _on_exit_button_pressed() -> void:
 	Variablemanager.globalscore += score
 	get_window().size = Vector2i(1920, 1080)
 	get_tree().change_scene_to_file("res://main.tscn");
+
+
+func _on_start_button_pressed() -> void:
+	start_button.hide();
+	title_screen.hide();
+	for i in range(GRID_SIZE):
+		var row = []
+		grid.append(row)
+		for j in range(GRID_SIZE):
+			var tile = TileScene.instantiate()
+			tile.set_val(1)
+			# Set tile position centered within its cell
+			tile.position = Vector2(j * tile_size + tile_size / 2, i * tile_size + tile_size / 2)
+			add_child(tile)
+			row.append(tile)
+	#go from solved state to starting state
+	shuffle_grid();
+	#incase shuffle solves grid, reshuffle:
+	while (solved()):
+		shuffle_grid();
+	game_active = true; 
+	timer.wait_time = time_allowed;
+	timer.start();
+	countdown.show()
+	countdown.text = str(timer.wait_time);

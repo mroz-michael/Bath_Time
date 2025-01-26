@@ -8,6 +8,7 @@ var game_started = Variablemanager.started
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$title.show()
 	new_game()
 	$music.play()
 	$mainSceneHud/FinalScore.hide()
@@ -52,6 +53,8 @@ func start_game():
 	Variablemanager.started = true
 	game_running = true
 	$character/AnimatedSprite2D.play()
+	$duck.play()
+	$sprinkle.play()
 	$angerincrement.start()
 	gameHud()
 	
@@ -62,11 +65,13 @@ func gameHud():
 	$mainSceneHud/CleanBar.show()
 	$mainSceneHud/Instructions.hide()
 	$mainSceneHud/StartButton.hide()
+	$title.hide()
 	$tubfrontanim.play()
 	
 	
 func game_over():
 	$Sponge.hide()
+	$duck.stop()
 	$mainSceneHud/CleanBar.hide()
 	game_running = false
 	#Variablemanager.globalscore = Variablemanager.globalscore / Variablemanager.gamesPlayed
@@ -75,6 +80,7 @@ func game_over():
 	$mainSceneHud/restart.show()
 	$mainSceneHud/youwin.show()
 	$tubfrontanim.stop()
+	$sprinkle.stop()
 	
 	
 #this function increments the player's cleaning progress
