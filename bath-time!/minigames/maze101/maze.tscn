@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bbsu40bygcb08"]
+[gd_scene load_steps=13 format=4 uid="uid://bbsu40bygcb08"]
 
 [ext_resource type="Texture2D" uid="uid://dulop4re06s3u" path="res://minigames/maze101/assets/block.jpg" id="1_qbmjd"]
 [ext_resource type="PackedScene" uid="uid://bucflpabhp7m4" path="res://minigames/maze101/player.tscn" id="2_jlyrr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddplu5imnkt0b" path="res://minigames/maze101/assets/mazeshadow.png" id="3_33fbw"]
 [ext_resource type="Texture2D" uid="uid://bjsevlu17rsks" path="res://minigames/maze101/assets/shadow.webp" id="3_tpy40"]
 [ext_resource type="PackedScene" uid="uid://da14l4ata0qgv" path="res://winbody.tscn" id="6_866sv"]
+[ext_resource type="Texture2D" uid="uid://xkwp4r8svsj2" path="res://ART/tabletscreen.png" id="6_qwdod"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_63wx0"]
 light_mode = 2
@@ -235,14 +236,13 @@ offset_right = 143.0
 offset_bottom = 83.0
 color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 
-[node name="exit" type="Button" parent="maze_layer/player"]
-offset_left = -59.0
-offset_top = 12.0
-offset_right = 52.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 20
-text = "Back to 
-Scrubbing!"
+[node name="TextureRect2" type="TextureRect" parent="maze_layer/player"]
+offset_left = -144.0
+offset_top = -89.0
+offset_right = 1776.0
+offset_bottom = 991.0
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("6_qwdod")
 
 [node name="winTxt" type="Label" parent="maze_layer/player"]
 offset_left = -96.0
@@ -277,6 +277,15 @@ out, the more
 the anger meter 
 decreases"
 
+[node name="exit" type="Button" parent="maze_layer/player"]
+offset_left = -59.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 20
+text = "Back to 
+Scrubbing!"
+
 [node name="start" type="Button" parent="maze_layer/player"]
 offset_left = -7.0
 offset_top = 49.0
@@ -295,6 +304,6 @@ position = Vector2(1927, 985)
 position = Vector2(1927, 264)
 
 [connection signal="hit" from="maze_layer/player" to="maze_layer" method="_on_character_body_2d_hit"]
-[connection signal="pressed" from="maze_layer/player/exit" to="maze_layer" method="_on_exit_pressed"]
 [connection signal="timeout" from="maze_layer/player/Timer" to="maze_layer" method="_on_timer_timeout"]
+[connection signal="pressed" from="maze_layer/player/exit" to="maze_layer" method="_on_exit_pressed"]
 [connection signal="pressed" from="maze_layer/player/start" to="maze_layer" method="_on_start_pressed"]

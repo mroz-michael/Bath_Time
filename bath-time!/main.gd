@@ -10,7 +10,7 @@ var game_started = Variablemanager.started
 func _ready() -> void:
 	$title.show()
 	new_game()
-	$music.play()
+	
 	$mainSceneHud/FinalScore.hide()
 	$mainSceneHud/TotalScore.show()
 	$mainSceneHud/TotalScore.text = "Score: " + str(Variablemanager.globalscore)
@@ -54,6 +54,7 @@ func start_game():
 	game_running = true
 	$character/AnimatedSprite2D.play()
 	$duck.play()
+	$music.play()
 	$sprinkle.play()
 	$angerincrement.start()
 	gameHud()

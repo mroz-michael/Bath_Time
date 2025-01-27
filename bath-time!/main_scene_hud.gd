@@ -20,4 +20,5 @@ func _on_restart_pressed() -> void:
 	Variablemanager.anger_meter = 2.5
 	Variablemanager.globalscore = 0
 	Variablemanager.gamesPlayed = 0
+	Variablemanager.gameCounter = 0
 	get_tree().change_scene_to_file("res://main.tscn")

@@ -136,7 +136,7 @@ position = Vector2(468, 659.91)
 rotation = -3.14159
 scale = Vector2(0.68, -0.68)
 sprite_frames = SubResource("SpriteFrames_yda0f")
-frame_progress = 0.565516
+frame_progress = 0.101123
 
 [node name="tubfrontanim" type="AnimatedSprite2D" parent="."]
 position = Vector2(975, 838)

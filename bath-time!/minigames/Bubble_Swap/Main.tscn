@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ct5ma2ol72bu5" path="res://minigames/Bubble_Swap/board.tscn" id="2_t6eix"]
 [ext_resource type="FontFile" uid="uid://sc622hhajqfc" path="res://minigames/Bubble_Swap/assets/poco_font/Poco.ttf" id="3_rs6n2"]
 [ext_resource type="FontFile" uid="uid://bfvlbx1yeqdq8" path="res://minigames/Bubble_Swap/assets/xolonium_font/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="4_fkyuc"]
-[ext_resource type="FontFile" path="res://minigames/Bubble_Swap/assets/xolonium_font/Xolonium.tres" id="5_jwu1e"]
+[ext_resource type="FontFile" uid="uid://cmng5x42dyif" path="res://minigames/Bubble_Swap/assets/xolonium_font/Xolonium.tres" id="5_jwu1e"]
 [ext_resource type="AudioStream" uid="uid://bivwkd4fsweg8" path="res://music/puzsong.mp3" id="6_vqnxu"]
 
 [node name="Main" type="Node2D"]
