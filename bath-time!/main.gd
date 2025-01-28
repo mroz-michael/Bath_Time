@@ -107,7 +107,7 @@ func set_progress(clean: float, angry: float):
 
 
 func _on_angerincrement_timeout() -> void:
-	if (anger_meter <= anger_threshold && game_running && $Sponge.mouse_speed > 1500):
+	if (anger_meter <= anger_threshold && game_running):
 		anger_meter += 1.0
 
 
