@@ -3,7 +3,7 @@ as our submission for the Global Game Jam 2025.
 
 The theme of this year's jam was "Bubbles" and we created our game using Godot, GDScript.
 
-Our game is about cleaning a stereotypical Computer Science student (cuz we smell..), and our art
+Our game is about cleaning a stereotypical Computer Science student and our art
 was inspired by South Park.  
 
 [+]: Setting up
